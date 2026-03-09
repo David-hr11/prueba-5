@@ -106,9 +106,10 @@ body{
 
   position:relative;
   overflow:hidden;
-
+  
   /* Overlay de color encima del img */
   background:linear-gradient(rgba(1,5,35,0.5), rgba(21,1,156,0.5));
+  background-image: url("Multimedia/Projects/proyecto_principal.png");
 }
 
 /* Imagen de fondo posicionada absolutamente */
