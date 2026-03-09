@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión - HelloWorld</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styleRegistro.css">
+<style>
+    /* Aviso de GitHub Pages */
+    .github-notice {
+        background: #fff3cd;
+        color: #856404;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ffeeba;
+        font-size: 14px;
+    }
+    .github-notice a {
+        color: #533f03;
+        font-weight: bold;
+    }
+    
+    /* Mensaje de demo */
+    .demo-message {
+        background: #e3f2fd;
+        color: #0d47a1;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-size: 14px;
+        text-align: center;
+        border: 1px solid #90caf9;
+    }
+    
+    /* Mantener los estilos originales del login */
+    .left-panel-login {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .welcome-message {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 30px;
+    }
+
+    .feature-list li {
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .feature-list li:before {
+        content: "✓";
+        background: rgba(255,255,255,0.2);
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+    .forgot-password {
+        text-align: right;
+        margin: 10px 0;
+    }
+
+    .forgot-password a {
+        color: #667eea;
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+
+    .demo-credentials {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-size: 0.9em;
+        border: 1px dashed #667eea;
+    }
+
+    .demo-credentials p {
+        margin: 5px 0;
+        color: #666;
+    }
+
+    .demo-credentials code {
+        background: #e9ecef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #495057;
+    }
+</style>
+</head>
+<body>
+    <!-- Aviso de GitHub Pages -->
+    <div class="github-notice">
+        ⚡ Versión estática para GitHub Pages. El login es demostrativo.
+    </div>
+
+    <!-- Navbar igual a la original pero con enlaces a versiones estáticas -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo">
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="nav-links">
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="about.html">Quiénes somos</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="Miembros.html">Miembros</a></li>
+            <li><a href="EVENTOS.html">Eventos</a></li>
+            <li><a href="QUIZ.html">Quiz interactivo</a></li>
+            <li class="join"><a href="Registro.html">Unirse</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="register-card">
+            <!-- Lado izquierdo: Información visual -->
+            <div class="left-panel left-panel-login">
+                <div class="welcome-message">
+                    <h3>👋 ¡Bienvenido de nuevo!</h3>
+                    <p>Accede a tu cuenta para conectarte con la comunidad, ver eventos exclusivos y participar en actividades.</p>
+                    
+                    <!-- Mensaje de demo dentro del panel izquierdo -->
+                    <div class="demo-message">
+                        🔧 Versión demostrativa - Inicia sesión con las credenciales de prueba
+                    </div>
+                    
+                    <ul class="feature-list">
+                        <li>Acceso a eventos privados</li>
+                        <li>Networking con profesionales</li>
+                        <li>Participación en quizzes</li>
+                        <li>Seguimiento de tu progreso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lado derecho: Formulario de login -->
+            <div class="right-panel">
+                <h2>Iniciar Sesión</h2>
+                <p class="subtitle">Ingresa tus credenciales para acceder</p>
+
+                <!-- Formulario demo - no envía datos -->
+                <form onsubmit="event.preventDefault(); loginDemo();" id="loginForm">
+                    <!-- Campo: Correo institucional -->
+                    <div class="form-group">
+                        <label for="email">Correo institucional <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@universidad.edu" required value="prueba@universidad.edu">
+                        <span class="helper-text">Usa el correo con el que te registraste</span>
+                    </div>
+
+                    <!-- Campo: Contraseña -->
+                    <div class="form-group">
+                        <label for="password">Contraseña <span class="required">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Tu contraseña" required value="20050115">
+                        <div class="password-info">
+                            <strong>Formato:</strong> 8 dígitos (AAAAMMDD)
+                        </div>
+                    </div>
+
+                    <!-- Opción "Recordarme" -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px 0;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" name="recordar" value="1"> Recordarme
+                        </label>
+                        <div class="forgot-password">
+                            <a href="#" onclick="alert('Demo: En la versión completa, aquí recuperarías tu contraseña'); return false;">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+
+                    <!-- Botón de inicio de sesión -->
+                    <button type="submit" class="btn-submit">Iniciar Sesión (Demo)</button>
+                </form>
+
+                <!-- Enlace a registro -->
+                <div class="login-redirect">
+                    ¿No tienes una cuenta?
+                    <a href="Registro.html">Regístrate aquí</a>
+                </div>
+
+                <!-- Credenciales de demostración -->
+                <div class="demo-credentials">
+                    <p><strong>🔐 Credenciales de prueba:</strong></p>
+                    <p>📧 Email: <code>prueba@universidad.edu</code></p>
+                    <p>🔑 Contraseña: <code>20050115</code></p>
+                    <p style="font-size: 0.8em; color: #999;">*Demo: Haz clic en Iniciar Sesión para probar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función demo para simular login
+        function loginDemo() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Validaciones igual a las originales
+            if (!email || !password) {
+                alert('❌ Por favor, completa todos los campos.');
+                return;
+            }
+
+            if (!email.includes('@') || email.split('@')[1].length < 3) {
+                alert('❌ Por favor, ingresa un correo electrónico válido.');
+                return;
+            }
+
+            if (password.length !== 8 || !/^\d+$/.test(password)) {
+                alert('❌ La contraseña debe tener exactamente 8 dígitos numéricos.');
+                return;
+            }
+
+            // Demo: Verificar credenciales de ejemplo
+            if (email === 'prueba@universidad.edu' && password === '20050115') {
+                alert('✅ ¡Demo exitoso! En la versión con PHP, serías redirigido a Miembros.php');
+                // En la versión real: window.location.href = 'Miembros.php';
+            } else {
+                alert('❌ Credenciales incorrectas. Prueba con: prueba@universidad.edu / 20050115');
+            }
+        }
+
+        // También mantener la validación del submit
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            loginDemo();
+        });
+    </script>
+</body>
+</html>

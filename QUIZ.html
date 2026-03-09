@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interactivo | HelloWorld</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para el funcionamiento del Quiz */
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; }
+        
+        #quiz-section { padding: 120px 20px 80px; text-align: center; min-height: 80vh; }
+        .impact-title { font-family: 'Impact', sans-serif; font-size: clamp(3rem, 10vw, 4.5rem); color: #2462bf; text-transform: uppercase; }
+
+        .quiz-card { 
+            max-width: 750px; margin: 40px auto; background: white; padding: 50px; 
+            border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        }
+
+        .progress-bar { height: 10px; background: #eee; border-radius: 5px; margin-bottom: 30px; overflow: hidden; }
+        #progress-fill { height: 100%; background: #2462bf; width: 0%; transition: 0.3s; }
+
+        .option-btn {
+            width: 100%; padding: 18px; margin: 8px 0; border: 2px solid #eef0f3;
+            border-radius: 12px; background: white; cursor: pointer; text-align: left;
+            font-size: 1.1rem; transition: 0.2s; color: #333;
+        }
+        .option-btn:hover { background: #2462bf; color: white; transform: translateX(10px); }
+
+        #quiz-result { display: none; }
+        .res-profile { font-size: 2.2rem; color: #2462bf; margin-bottom: 10px; font-weight: bold; }
+        .res-desc { font-style: italic; border-left: 5px solid #2462bf; padding: 15px; background: #f9f9f9; text-align: left; margin: 20px 0; color: #555; }
+        
+        .btn-cta { 
+            background: #0d2c5e; color: white; border: none; padding: 18px 45px; 
+            font-size: 1.2rem; border-radius: 8px; cursor: pointer; font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .btn-cta:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo" width="80" height="80">
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="nav-links">
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="about.html">Quiénes somos</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="Miembros.html">Miembros</a></li>
+            <li><a href="EVENTOS.html">Eventos</a></li>
+            <li><a href="QUIZ.html">Quiz interactivo</a></li>
+            <li class="join"><a href="Registro.html">Unirse</a></li>
+        </ul>
+    </nav>
+
+    <section id="quiz-section">
+        <h2 class="impact-title">ENCUENTRA TU LUGAR</h2>
+        <p style="color: #666; margin-top: 10px;">Descubre tu perfil ideal dentro de la tecnología y el club.</p>
+
+        <div class="quiz-card">
+            <div id="quiz-ui">
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+                <p id="q-number" style="font-weight: bold; color: #2462bf; margin-bottom: 10px;"></p>
+                <div id="q-text" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 25px; color: #333;"></div>
+                <div id="options-box"></div>
+            </div>
+
+            <div id="quiz-result">
+                <h3 id="res-profile" class="res-profile"></h3>
+                <div id="res-desc" class="res-desc"></div>
+                <p style="margin-bottom: 25px;"><strong>HelloWorld tiene un lugar para ti.</strong></p>
+                <button class="btn-cta" onclick="window.location.href='Registro.html'">ÚNETE AL CLUB</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="mono-text">> HelloWorld_</h2>
+                <p class="tagline">La primera línea de algo grande.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="https://github.com/anagmc059" target="_blank" class="social-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/hello-world-undefined-5243573b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://www.instagram.com/helloworld_unam?igsh=NGc1cXB5MWlveDVn" target="_blank" class="social-link">Instagram</a>
+                <a href="https://www.itsebastianvz.dev/" target="_blank" class="social-link">Contacto</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="final-phrase">Todo empieza con un <span class="highlight">Hello World</span>. En este club, es donde empieza tu impacto.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Configuración de las 16 preguntas multidisciplinarias
+        const questions = [
+            { q: "¿Qué te emociona más de un nuevo producto tecnológico?", a: "Cómo funciona por dentro", b: "Cómo se siente al usarlo", c: "Cómo conecta con la gente" },
+            { q: "En un equipo de trabajo, ¿qué rol prefieres?", a: "Construir la solución técnica", b: "Diseñar la interfaz", c: "Comunicar y presentar la idea" },
+            { q: "¿Cuál es tu plataforma favorita para explorar?", a: "GitHub o Foros técnicos", b: "Behance o Instagram", c: "LinkedIn o TikTok" },
+            { q: "Si una app falla, ¿qué es lo primero que notas?", a: "Bugs en el código", b: "Navegación confusa", c: "Mensaje de error poco claro" },
+            { q: "¿Qué herramienta te gustaría dominar?", a: "Lenguajes de programación", b: "Software de diseño/3D", c: "Estrategias de marketing" },
+            { q: "¿Cómo resuelves un problema?", a: "Análisis lógico", b: "Dibujando prototipos", c: "Debatiendo con el equipo" },
+            { q: "Al visitar una web, ¿qué valoras más?", a: "Rapidez y eficiencia", b: "Atractivo visual", c: "Contenido persuasivo" },
+            { q: "¿Qué tipo de contenido prefieres crear?", a: "Documentación o scripts", b: "Gráficos o animaciones", c: "Artículos o guiones" },
+            { q: "¿Área tech favorita?", a: "IA y Backend", b: "Frontend y VR", c: "Social Media y PR" },
+            { q: "¿Proyecto soñado?", a: "Crear un motor de búsqueda", b: "Diseñar una UX inmersiva", c: "Dirigir la comunicación tech" },
+            { q: "¿Qué prefieres optimizar?", a: "Rendimiento del sistema", b: "Estética del usuario", c: "Alcance del mensaje" },
+            { q: "En un Hackathon, destacarías...", a: "Escribiendo código", b: "Diseñando mockups", c: "Haciendo el pitch final" },
+            { q: "¿Cómo te actualizas?", a: "Documentación técnica", b: "Tendencias de diseño", c: "Podcasts de industria" },
+            { q: "En un evento del club, tú...", a: "Configuras el streaming", b: "Creas la identidad visual", c: "Coordinas la difusión" },
+            { q: "¿Qué es para ti la tecnología?", a: "Herramienta de resolución", b: "Lienzo creativo", c: "Medio de conexión" },
+            { q: "¿Tu mayor superpoder?", a: "Lógica pura", b: "Creatividad visual", c: "Persuasión y empatía" }
+        ];
+
+        let currentQ = 0;
+        let points = { a: 0, b: 0, c: 0 };
+
+        function loadQuiz() {
+            if (currentQ < questions.length) {
+                const data = questions[currentQ];
+                document.getElementById('q-number').innerText = `Pregunta ${currentQ + 1} de 16`;
+                document.getElementById('q-text').innerText = data.q;
+                document.getElementById('progress-fill').style.width = `${((currentQ) / questions.length) * 100}%`;
+                document.getElementById('options-box').innerHTML = `
+                    <button class="option-btn" onclick="answer('a')">A) ${data.a}</button>
+                    <button class="option-btn" onclick="answer('b')">B) ${data.b}</button>
+                    <button class="option-btn" onclick="answer('c')">C) ${data.c}</button>`;
+            } else { showRes(); }
+        }
+
+        function answer(val) { points[val]++; currentQ++; loadQuiz(); }
+
+        function showRes() {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '100%';
+            let p = "", d = "";
+            
+            // Lógica de cálculo de resultados
+            if (points.a >= points.b && points.a >= points.c) { 
+                p = "Product Builder"; 
+                d = "Eres el motor técnico. Te apasiona la lógica, el funcionamiento interno y construir soluciones robustas desde el código."; 
+            }
+            else if (points.b >= points.a && points.b >= points.c) { 
+                p = "Experience Designer"; 
+                d = "Eres el alma creativa. Tu enfoque está en la estética, la usabilidad y en crear experiencias que enamoren al usuario."; 
+            }
+            else { 
+                p = "Tech Evangelist"; 
+                d = "Eres el puente entre la innovación y las personas. Tienes el don de comunicar ideas complejas y conectar a la gente."; 
+            }
+            
+            document.getElementById('res-profile').innerText = `¡Eres un ${p}!`;
+            document.getElementById('res-desc').innerText = d;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

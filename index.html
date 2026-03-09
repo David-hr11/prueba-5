@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelloWorld Community</title>
+  <link rel="preload" as="image" href="Multimedia/About/logoHW.png">
+  <link rel="preload" as="image" href="Multimedia/About/fondo_pag.png">
+  <!-- CSS crítico inline para pintar navbar + hero sin esperar el archivo externo -->
+  <style>
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:Arial,sans-serif;}
+    .navbar{position:sticky;top:10px;display:flex;justify-content:space-between;align-items:center;padding:18px 40px;margin:20px;background:white;border:3px solid #152f85;border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,.2);z-index:1000;}
+    .logo img{height:80px;width:auto;}
+    .nav-links{display:flex;align-items:center;gap:18px;list-style:none;margin:0;padding:0;}
+    .nav-links a{font-size:18px;font-weight:600;color:#161B22;text-decoration:none;padding:12px 18px;border-radius:50px;}
+    .join a{background:#7a0cc4;color:white;padding:12px 22px;border-radius:50px;}
+    .hero{height:90vh;min-height:500px;display:flex;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(rgba(1,5,35,.5),rgba(21,1,156,.5));}
+    .hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;mix-blend-mode:multiply;}
+    .hero-content{position:relative;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:40px 60px;color:white;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:500px;z-index:1;}
+    .hero-content h1{font-size:2.2rem;margin-bottom:12px;}
+    .hero-btn{display:inline-block;margin-top:20px;background:#7a0cc4;color:white;padding:14px 30px;border-radius:50px;font-weight:bold;text-decoration:none;}
+    #menu-toggle{display:none;}
+    .menu-icon{display:none;font-size:30px;cursor:pointer;color:#152f85;}
+    @media(max-width:768px){
+      .menu-icon{display:block;}
+      .navbar{flex-wrap:wrap;gap:10px;margin:10px;}
+      .nav-links{position:absolute;top:100%;left:0;width:100%;background:white;flex-direction:column;align-items:center;max-height:0;overflow:hidden;transition:.4s;border-radius:0 0 20px 20px;box-shadow:0 10px 20px rgba(0,0,0,.15);}
+      #menu-toggle:checked + .menu-icon + .nav-links{max-height:350px;padding:20px 0;}
+      .hero-content{padding:30px 20px;max-width:100%;}
+    }
+  </style>
+  <!-- styles.css carga sin bloquear — el critical CSS de arriba ya pintó lo visible -->
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo" width="80" height="80">
+    </a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    <ul class="nav-links">
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="about.html">Quiénes somos</a></li>
+      <li><a href="projects.html">Proyectos</a></li>
+      <li><a href="Miembros.html">Miembros</a></li>
+      <li><a href="EVENTOS.html">Eventos</a></li>
+      <li><a href="QUIZ.html">Quiz interactivo</a></li>
+      <li class="join"><a href="Registro.html">Unirse</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <img
+      src="Multimedia/About/fondo_pag.png"
+      alt=""
+      class="hero-bg-img"
+      fetchpriority="high"
+      width="1920"
+      height="1080"
+    >
+    <div class="hero-content">
+      <h1>HelloWorld Community</h1>
+      <p>Aprende tecnología, crea proyectos y participa en hackatones.</p>
+      <a href="Registro.html" class="hero-btn">Unirse</a>
+    </div>
+  </section>
+
+</body>
+</html>

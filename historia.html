@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - HelloWorld</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+
+    <!-- Logo que redirige al inicio -->
+    <a href="index.html" class="logo">
+      <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo" width="80" height="80">
+    </a>
+
+    <!-- Checkbox usado para activar el menú responsive -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- Icono hamburguesa visible en móviles -->
+    <label for="menu-toggle" class="menu-icon">
+      ☰
+    </label>
+
+    <!-- Enlaces de navegación -->
+    <ul class="nav-links">
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="about.html">Quiénes somos</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="Miembros.html">Miembros</a></li>
+            <li><a href="EVENTOS.html">Eventos</a></li>
+            <li><a href="QUIZ.html">Quiz interactivo</a></li>
+            <li class="join"><a href="Registro.html">Unirse</a></li>
+        </ul>
+
+  </nav>
+
+    <section class="about">
+        <div class="about-header">
+            <h1>> Hello World_</h1>
+            <p>Todo programador escribe su primera línea... pero aquí es donde comienza tu impacto.</p>
+            <p>Aquí te contaremos un poco hacerca de nuestros pirncipales objetivos</p>
+        </div>
+
+        <div class="cards" style="margin-top: 60px;">
+            <div class="card">
+                <div class="card-header">
+                    <h2>./misión.sh</h2>
+                </div>
+                <div class="short-text">
+                    <p style="color: white; text-align: center;">Impulsar la excelencia y competitividad en el ámbito tecnológico, formando un equipo de alto rendimiento dedicado a la participación exitosa en hackatones y desafíos de programación.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>./visión.sh</h2>
+                </div>
+                <div class="short-text">
+                    <p style="color: white; text-align: center;">Ser un club reconocido por formar equipos altamente competitivos en hackatones, destacando por su excelencia técnica, innovación y trabajo colaborativo.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>./objetivo.sh</h2>
+                </div>
+                <div class="short-text">
+                    <p style="color: white; text-align: center;">Desarrollar un espacio estudiantil que facilite la participación activa de la comunidad universitaria en iniciativas externas académicas, profesionales y tecnológicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div>
+            <p>Despues de todo recuerda, todo empieza con un......¡'H E L L O'!</p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="mono-text" style="margin: 0; font-size: 1.8rem; color: #0D1117;">> HelloWorld_</h2>
+                <p class="tagline" style="color: #4B5563; margin-top: 10px;">La primera línea de algo grande.</p>
+            </div>
+            
+            <div class="footer-links" style="display: flex; gap: 20px;">
+                <a href="https://github.com/HelloWorldClub" target="_blank" class="social-link" style="color: #1F2937; text-decoration: none; font-weight: bold;">GitHub</a>
+                <a href="https://www.linkedin.com/in/hello-world-undefined-5243573b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link" style="color: #1F2937; text-decoration: none; font-weight: bold;">LinkedIn</a>
+                <a href="https://www.instagram.com/helloworld_unam?igsh=NGc1cXB5MWlveDVn" target="_blank" class="social-link" style="color: #1F2937; text-decoration: none; font-weight: bold;">Instagram</a>
+                <a href="https://www.itsebastianvz.dev/" target="_blank" class="social-link" style="color: #1F2937; text-decoration: none; font-weight: bold;">Contacto</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom" style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1);">
+            <p class="final-phrase" style="color: #0D1117; font-weight: 500;">Todo empieza con un <span style="color: #00B36E; font-weight: bold;">Hello World</span>. En este club, es donde empieza tu impacto.</p>
+        </div>
+    </footer>
+
+    <script>
+        const secretCode = ['h', 'e', 'l', 'l', 'o'];
+        let inputSequence = [];
+
+        document.addEventListener('keydown', (e) => {
+            if(e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+            
+            inputSequence.push(e.key.toLowerCase());
+            inputSequence = inputSequence.slice(-secretCode.length);
+            
+            if (inputSequence.join('') === secretCode.join('')) {
+                if(!document.getElementById('wow-easter-egg')){
+                    triggerEasterEgg();
+                }
+                inputSequence = []; 
+            }
+        });
+
+        function triggerEasterEgg() {
+            const overlay = document.createElement('div');
+            overlay.id = 'wow-easter-egg';
+            
+            overlay.innerHTML = `
+                <div class="terminal-egg">
+                    <p class="typewriter">>_ ROOT ACCESS GRANTED...</p>
+                    <p class="fade-in-1">>_ HELLO, DEVELOPER.</p>
+                    <p class="fade-in-2" style="color: #E6EDF3;">Acabas de descubrir el secreto de HelloWorld. ¿Tienes lo necesario para unirte a la élite del código?</p>
+                    <div class="fade-in-3" style="margin-top: 25px;">
+                        <button class="secret-cta" onclick="window.location.href='#registro'">[ Postularme ahora ]</button>
+                        <button class="secret-cta outline" onclick="document.getElementById('wow-easter-egg').remove()">[ Cerrar terminal ]</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
+    </script>
+</body>
+</html>
+
+

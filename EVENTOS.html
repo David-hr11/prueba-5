@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTOS | HelloWorld</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root { --primary: #2462bf; --accent: #ffcc00; --dark: #0d2c5e; }
+        
+        /* Ajustes específicos para la sección de calendario */
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--primary); color: white; }
+        
+        #seccion-eventos { padding: 100px 20px 60px; text-align: center; }
+        .impact-title { font-family: 'Impact', sans-serif; font-size: clamp(3rem, 10vw, 5rem); margin-bottom: 10px; }
+
+        .calendar-card {
+            max-width: 900px; margin: 0 auto 40px; background: rgba(255,255,255,0.1);
+            padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);
+        }
+
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+        .day-name { color: var(--accent); font-weight: bold; padding-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; }
+        
+        .day { 
+            aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; transition: 0.3s; font-size: 1.1rem; position: relative;
+        }
+
+        .today { border: 2px solid white; }
+        .has-event { background: var(--accent); color: var(--dark); font-weight: bold; cursor: pointer; }
+        .has-event:hover { transform: scale(1.1); background: white; }
+
+        .event-info-grid {
+            max-width: 900px; margin: 0 auto; display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
+        .event-card {
+            background: white; color: #333; padding: 20px; border-radius: 15px;
+            text-align: left; border-left: 6px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo" width="80" height="80">
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <ul class="nav-links">
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="about.html">Quiénes somos</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="Miembros.html">Miembros</a></li>
+            <li><a href="EVENTOS.html">Eventos</a></li>
+            <li><a href="QUIZ.html">Quiz interactivo</a></li>
+            <li class="join"><a href="Registro.html">Unirse</a></li>
+        </ul>
+    </nav>
+
+    <section id="seccion-eventos">
+        <h2 class="impact-title">EVENTOS</h2>
+        <p style="margin-bottom: 60px; color: #e1d9d9;">Descubre algunas de las actividades disponibles en este mes</p>
+        <h3 id="month-name" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;"></h3>
+
+        <div class="calendar-card">
+            <div class="calendar-grid" id="calendar-mesh">
+                <div class="day-name">Lun</div><div class="day-name">Mar</div><div class="day-name">Mié</div>
+                <div class="day-name">Jue</div><div class="day-name">Vie</div><div class="day-name">Sáb</div><div class="day-name">Dom</div>
+            </div>
+        </div>
+
+        <div class="event-info-grid" id="event-list"></div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="mono-text">> HelloWorld_</h2>
+                <p class="tagline">La primera línea de algo grande.</p>
+            </div>
+            
+            <div class="footer-links">
+                <a href="https://github.com/anagmc059" target="_blank" class="social-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/hello-world-undefined-5243573b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://www.instagram.com/helloworld_unam?igsh=NGc1cXB5MWlveDVn" target="_blank" class="social-link">Instagram</a>
+                <a href="https://www.itsebastianvz.dev/" target="_blank" class="social-link">Contacto</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="final-phrase">Todo empieza con un <span class="highlight">Hello World</span>. En este club, es donde empieza tu impacto.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica de Renderizado del Calendario
+        const eventsData = [
+            { day: 10, month: 2, title: "Workshop de React", desc: "Aprende bases de desarrollo moderno.", type: "WORKSHOP" },
+            { day: 25, month: 2, title: "Hackathon Interno", desc: "12 horas de competencia y pizza.", type: "COMPETENCIA" },
+            { day: 15, month: 3, title: "Demo Day", desc: "Presentación de proyectos finales.", type: "NETWORKING" }
+        ];
+
+        function renderCalendar() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            
+            document.getElementById('month-name').innerText = `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const calendarMesh = document.getElementById('calendar-mesh');
+            const eventList = document.getElementById('event-list');
+
+            let startingIndex = firstDay === 0 ? 6 : firstDay - 1;
+
+            for (let i = 0; i < startingIndex; i++) {
+                const emptyDiv = document.createElement('div');
+                calendarMesh.appendChild(emptyDiv);
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.classList.add('day');
+                dayDiv.innerText = d;
+
+                if (d === now.getDate()) dayDiv.classList.add('today');
+
+                const event = eventsData.find(e => e.day === d && e.month === month);
+                if (event) {
+                    dayDiv.classList.add('has-event');
+                    const card = document.createElement('div');
+                    card.className = 'event-card';
+                    card.innerHTML = `
+                        <small style="color:var(--primary); font-weight:bold">${event.type}</small>
+                        <h4 style="margin:10px 0 5px">${event.title}</h4>
+                        <p style="margin:0; font-size:0.9rem">${event.desc}</p>
+                        <p style="font-size:0.8rem; margin-top:10px"><strong>Día:</strong> ${d} de ${monthNames[month]}</p>
+                    `;
+                    eventList.appendChild(card);
+                }
+                calendarMesh.appendChild(dayDiv);
+            }
+        }
+
+        renderCalendar();
+    </script>
+</body>
+</html>

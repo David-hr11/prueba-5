@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qué es HelloWorld</title>
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+   <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+
+    <!-- Logo que redirige al inicio -->
+    <a href="index.html" class="logo">
+      <img src="Multimedia/About/logoHW.png" alt="HelloWorld Logo" width="80" height="80">
+    </a>
+
+    <!-- Checkbox usado para activar el menú responsive -->
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- Icono hamburguesa visible en móviles -->
+    <label for="menu-toggle" class="menu-icon">
+      ☰
+    </label>
+
+    <!-- Enlaces de navegación -->
+    <ul class="nav-links">
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="about.html">Quiénes somos</a></li>
+            <li><a href="projects.html">Proyectos</a></li>
+            <li><a href="Miembros.html">Miembros</a></li>
+            <li><a href="EVENTOS.html">Eventos</a></li>
+            <li><a href="QUIZ.html">Quiz interactivo</a></li>
+            <li class="join"><a href="Registro.html">Unirse</a></li>
+        </ul>
+
+  </nav>
+  <!-- ================= SECCIÓN ABOUT ================= -->
+  <section class="about">
+
+    <!-- Encabezado de la sección -->
+    <div class="about-header">
+      <h1>¿Qué es HelloWorld?</h1>
+      <p>Una comunidad donde los estudiantes aprenden, crean e impactan.</p>
+    </div>
+
+    <!-- Layout principal (carrusel + tarjetas + skills) -->
+    <section class="about-layout">
+
+      <!-- Carrusel vertical de fotos -->
+      <div class="photo-carousel">
+        <div class="carousel-track">
+          <img src="Multimedia/About/carr1.jpeg" loading="lazy" width="400" height="300" alt="Foto 1">
+          <img src="Multimedia/About/carr2.jpeg" loading="lazy" width="400" height="300" alt="Foto 2">
+          <img src="Multimedia/About/carr3.jpeg" loading="lazy" width="400" height="300" alt="Foto 3">
+          <img src="Multimedia/About/carr4.jpeg" loading="lazy" width="400" height="300" alt="Foto 4">
+          <img src="Multimedia/About/carr5.jpeg" loading="lazy" width="400" height="300" alt="Foto 5">
+
+          <!-- Duplicadas para crear efecto de loop en el carrusel -->
+          <img src="Multimedia/About/carr1.jpeg" loading="lazy" width="400" height="300" alt="Foto 1">
+          <img src="Multimedia/About/carr2.jpeg" loading="lazy" width="400" height="300" alt="Foto 2">
+          <img src="Multimedia/About/carr3.jpeg" loading="lazy" width="400" height="300" alt="Foto 3">
+          <img src="Multimedia/About/carr4.jpeg" loading="lazy" width="400" height="300" alt="Foto 4">
+          <img src="Multimedia/About/carr5.jpeg" loading="lazy" width="400" height="300" alt="Foto 5">
+        </div>
+      </div>
+
+      <!-- Tarjetas principales del club -->
+      <div class="cards-triangle">
+
+        <!-- TARJETA: APRENDER -->
+        <div class="card aprender">
+
+          <div class="card-header">
+            <h2>💻 Aprender</h2>
+            <p class="short-text">
+              Workshops, mentorías y aprendizaje colaborativo.
+            </p>
+          </div>
+
+          <!-- Información extendida que aparece al hacer hover -->
+          <div class="card-expanded">
+            <img src="Multimedia/About/aprende.jpg" width="400" height="250" loading="lazy">
+
+            <p>
+              Aquí los estudiantes pueden aprender unos de otros,
+              participar en proyectos reales y desarrollar tanto
+              habilidades técnicas como habilidades blandas.
+            </p>
+
+            <p>
+              No importa la carrera que estudies. HelloWorld es un
+              espacio para que estudiantes de distintas áreas
+              compartan conocimiento y aprendan juntos.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- TARJETA: CREAR -->
+        <div class="card crear">
+
+          <div class="card-header">
+            <h2>🚀 Crear</h2>
+            <p class="short-text">
+              Construimos proyectos y generamos nuevas oportunidades.
+            </p>
+          </div>
+
+          <div class="card-expanded">
+            <img src="Multimedia/About/crear.png" width="400" height="250" loading="lazy">
+
+            <p>
+              En HelloWorld creemos que crear no solo significa desarrollar tecnología,
+              sino también construir relaciones y oportunidades. A través de proyectos,
+              hackatones y colaboraciones, los miembros pueden conectar con otros
+              estudiantes, mentores y profesionales.
+            </p>
+
+            <p>
+              Estas experiencias permiten desarrollar habilidades técnicas como
+              programación o diseño, pero también habilidades clave como trabajo
+              en equipo, liderazgo y comunicación.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- TARJETA: IMPACTAR -->
+        <div class="card impactar">
+
+          <div class="card-header">
+            <h2>🌎 Impactar</h2>
+            <p class="short-text">
+              Aplicamos lo aprendido para generar impacto real.
+            </p>
+          </div>
+
+          <div class="card-expanded">
+            <img src="Multimedia/About/impacto.png" width="400" height="250" loading="lazy">
+
+            <p>
+              En HelloWorld buscamos aplicar todo lo aprendido dentro del club
+              para resolver problemas reales y generar un impacto positivo
+              en nuestra comunidad universitaria.
+            </p>
+
+            <p>
+              Nuestro objetivo no solo es desarrollar tecnología, sino también
+              fortalecer la unión entre estudiantes y crear un espacio donde
+              cada miembro pueda crecer personal y profesionalmente.
+            </p>
+
+            <p>
+              Aspiramos a que HelloWorld sea un punto de referencia dentro
+              de los clubs de la facultad y una plataforma que impulse a
+              nuestros miembros a convertirse en líderes del futuro.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Lista de habilidades desarrolladas en el club -->
+      <div class="skills">
+
+        <h3>¿Qué desarrollamos?</h3>
+
+        <ul>
+
+          <li>
+            <span class="skill-title">Tecnología</span>
+            <span class="skill-desc">
+              Programación, hardware y desarrollo de proyectos.
+            </span>
+          </li>
+
+          <li>
+            <span class="skill-title">Trabajo en equipo</span>
+            <span class="skill-desc">
+              Colaboración entre estudiantes de distintas carreras.
+            </span>
+          </li>
+
+          <li>
+            <span class="skill-title">Liderazgo</span>
+            <span class="skill-desc">
+              Organización y dirección de proyectos tecnológicos.
+            </span>
+          </li>
+
+          <li>
+            <span class="skill-title">Innovación</span>
+            <span class="skill-desc">
+              Creación de ideas y soluciones nuevas.
+            </span>
+          </li>
+
+          <li>
+            <span class="skill-title">Emprendimiento</span>
+            <span class="skill-desc">
+              Desarrollo de proyectos con visión de impacto.
+            </span>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- ================= ESTADÍSTICAS ================= -->
+    <div class="stats">
+
+      <div class="stat">
+        <h2>20+</h2>
+        <p>Miembros</p>
+      </div>
+
+      <div class="stat">
+        <h2>2</h2>
+        <p>Carreras</p>
+      </div>
+
+      <div class="stat">
+        <h2>10</h2>
+        <p>Proyectos</p>
+      </div>
+
+      <div class="stat">
+        <h2>∞</h2>
+        <p>Posibilidades</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    // Soporte táctil para las tarjetas en móvil
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('card-active');
+      });
+    });
+  </script>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h2 class="mono-text">> HelloWorld_</h2>
+        <p class="tagline">La primera línea de algo grande.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/anagmc059" target="_blank" class="social-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/hello-world-undefined-5243573b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="social-link">LinkedIn</a>
+        <a href="https://www.instagram.com/helloworld_unam?igsh=NGc1cXB5MWlveDVn" target="_blank" class="social-link">Instagram</a>
+        <a href="https://www.itsebastianvz.dev/" target="_blank" class="social-link">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="final-phrase">Todo empieza con un <span style="color:#00B36E;font-weight:bold;">Hello World</span>. En este club, es donde empieza tu impacto.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+
